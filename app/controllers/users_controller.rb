@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit]
+  before_action :set_user, only: [:show, :edit, :update]
     
     def new
         @user = User.new
@@ -20,6 +20,16 @@ class UsersController < ApplicationController
 
     def edit
       
+    end
+    
+    def update
+      if @user.update_attributes(user_params)
+        flash[:success] = "User was successfully updated"
+        redirect_to user_path(@user)
+      else
+        flash[:error] = "Something went wrong"
+        render 'edit'
+      end
     end
     
     
