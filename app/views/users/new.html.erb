@@ -1,11 +1,5 @@
 <div class="container-fluid text-center">    
   <div class="row content">
-  <%= simple_form_for @user do |f| %>
-        <%= f.input :first_name %>
-        <%= f.input :last_name %>
-        <%= f.input :email %>
-        <%= f.input :password %>
-        <%= f.button :submit, 'Submit User' %>
-    <% end %>
+  <%= render 'form' %>
   </div>
 </div>
