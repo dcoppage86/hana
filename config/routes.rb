@@ -11,8 +11,12 @@ Rails.application.routes.draw do
     resources :projects, only: [:show, :index]
   end
     
-  resources :projects do
-      resources :tasks
+  resources :projects, only: [:show] do
+      resources :tasks, only: [:new]
   end
+
+  resources :tasks
+  resources :projects
+  resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
