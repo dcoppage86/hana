@@ -5,21 +5,20 @@ class ProjectsController < ApplicationController
         if params[:user_id]
             @projects = User.find(params[:user_id]).projects
         else
-            @projects = Project.all
+            @projects = Projects.all
         end
     end
 
     def new
-        byebug
         @project = Project.new
         
     end
 
     def create
         
-        @project = Project.new(params[:name, :content])
+        @project = Project.new(params[:name])
         if @project.save 
-            redirect_to user_project_path(@project)
+            redirect_to project_path(@project)
         else 
             render :new
         end

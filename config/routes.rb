@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :comments
   # landing page
   root 'sessions#home'
 
@@ -16,5 +15,8 @@ Rails.application.routes.draw do
       resources :tasks, only: [:new]
   end
 
+
+  resources :projects
+  resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
