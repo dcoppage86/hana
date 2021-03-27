@@ -1,0 +1,5 @@
+<%= simple_form_for @user.project do |f| %>
+    <%= f.input :name %>
+    <%= f.text :content %>
+    <%= f.button :submit, 'Submit Project' %>
+<% end %>
