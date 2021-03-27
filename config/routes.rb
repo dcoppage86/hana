@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   post 'login', to: 'sessions#create'
   
-  resources :users do
-    resources :projects
+  resources :users, only: [:show] do
+    resources :projects, only: [:show, :index]
   end
     
   resources :projects do

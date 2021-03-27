@@ -3,17 +3,17 @@ class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
-        @projects = Project.all
+        @projects = @user.projects
     end
 
     def new
-        @project = @user.projects.build
+        @project = @user.project.new
         
     end
 
     def create
         
-        @project = Project.new(params[:name])
+        @project = @user.project.new(params[:name, :content])
         if @project.save 
             redirect_to user_project_path(@project)
         else 
@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
     end
 
     def get_user
-        @user = User.find_by_id(params[:id])
+        @user = User.find(params[:user_id])
     end
     
     
