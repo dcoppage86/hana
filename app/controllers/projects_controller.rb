@@ -2,24 +2,20 @@ class ProjectsController < ApplicationController
     before_action :set_project, only: [:show]
 
     def index
-        @projects = @user.projects
+        @projects = Project.all
     end
 
     def new
-        @project = @user.projects.build
+        @project = Project.new
+        @project.tasks.build
     end
 
     def create
-        @project = @user.projects.build(project_params)
-
-        respond_to do |format|
-            if @project.save
-                format.html { redirect_to user_projects_path, notice: 'Project was successfully created.'}
-                format.json { render :show, status: created, location: @project}
-            else
-                format.html { render :new }
-                format.json { render json: @project.errors, status: :unprocessable_entity}
-            end
+        @project = Project.new(project_params)
+        if @project.save 
+            redirect_to @project
+        else 
+            render :new
         end
     end
 
