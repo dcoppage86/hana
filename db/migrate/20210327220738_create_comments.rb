@@ -1,6 +1,8 @@
-class CreateUserProjects < ActiveRecord::Migration[6.0]
+class CreateComments < ActiveRecord::Migration[6.0]
   def change
-    create_table :user_projects do |t|
+    create_table :comments do |t|
+      t.string :subject
+      t.text :content
       t.belongs_to :user, null: false, foreign_key: true
       t.belongs_to :project, null: false, foreign_key: true
 

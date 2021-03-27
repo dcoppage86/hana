@@ -1,4 +1,4 @@
 <h1>Welcome, <%= @user.first_name %></h1>
 <p>Create A New Project</p>
-<%= link_to 'New Project', new_user_project_path %>
+<%= link_to 'New Project', new_user_project_path(current_user) %>
       
