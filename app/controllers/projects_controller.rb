@@ -1,9 +1,12 @@
 class ProjectsController < ApplicationController
-    before_action :get_user
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
-        @projects = @user.projects
+        if params[:user_id]
+            @projects = User.find(params[:user_id]).projects
+        else
+            @projects = Projects.all
+        end
     end
 
     def new
@@ -34,9 +37,7 @@ class ProjectsController < ApplicationController
         @project = Project.find_by_id(params[:id])
     end
 
-    def get_user
-        @user = User.find(params[:user_id])
-    end
+    
     
     
     
