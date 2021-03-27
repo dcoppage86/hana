@@ -12,10 +12,14 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        @project = Project.new(params[:name])
-        if @project.save 
-            redirect_to project_path(@project)
-        else 
+        if current_user
+            @project = Project.new(params[:name])
+            if @project.save 
+                redirect_to user_project_path
+            else 
+                render :new
+            end
+        else
             render :new
         end
     end
