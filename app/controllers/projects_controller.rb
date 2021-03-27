@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-    before_action :set_project, only: [:show]
+    before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
         @projects = Project.all
@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        @project = Project.new(project_params)
+        @project = Project.new(params[:name, :content])
         if @project.save 
             redirect_to @project
         else 
@@ -20,17 +20,13 @@ class ProjectsController < ApplicationController
     end
 
     def show
-        
+        @task = Task.new
     end
     
     
     
 
     private
-
-    def project_params
-        params.require(:project).permit(:name)
-    end
 
     def set_project
         @project = Project.find_by_id(params[:id])
