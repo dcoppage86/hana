@@ -1,3 +1,2 @@
-<h1>Welcome, <%= @user %></h1>
-<p>Create A New Project</p>
-<%= link_to 'New Project', new_project_path %> 
+<h1>This is your new project, <%= @user.first_name %></h1>
+<p> <%= @project.name %> </p>
