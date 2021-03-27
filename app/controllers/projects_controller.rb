@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+    before_action :set_user
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -30,6 +31,10 @@ class ProjectsController < ApplicationController
 
     def set_project
         @project = Project.find_by_id(params[:id])
+    end
+
+    def set_user
+        @user = User.find_by_id(params[:id])
     end
     
     
