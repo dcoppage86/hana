@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-    before_action :set_user
+    before_action :get_user
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -7,19 +7,16 @@ class ProjectsController < ApplicationController
     end
 
     def new
-        @project = Project.new
-        @project.tasks.build
+        @project = @user.projects.build
+        
     end
 
     def create
-        if current_user
-            @project = Project.new(params[:name])
-            if @project.save 
-                redirect_to user_project_path
-            else 
-                render :new
-            end
-        else
+        
+        @project = Project.new(params[:name])
+        if @project.save 
+            redirect_to user_project_path(@project)
+        else 
             render :new
         end
     end
@@ -37,7 +34,7 @@ class ProjectsController < ApplicationController
         @project = Project.find_by_id(params[:id])
     end
 
-    def set_user
+    def get_user
         @user = User.find_by_id(params[:id])
     end
     
