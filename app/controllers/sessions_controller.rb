@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    skip_before_action :login_required, :only => [:home, :new, :create]
+    # skip_before_action :login_required, :only => [:home, :new, :create]
     def home
         if logged_in?
             redirect_to projects_path
