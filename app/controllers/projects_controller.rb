@@ -14,8 +14,6 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        
-        
         @project = Project.new(project_params)
         if @project.save 
             redirect_to user_project_path(current_user, @project)
@@ -27,6 +25,20 @@ class ProjectsController < ApplicationController
     def show
         @task = Task.new
     end
+
+    def edit
+        
+    end
+
+    def update
+        if @project.update_attributes(project_params)
+          redirect_to user_project_path(current_user, @project)
+        else
+          render 'edit'
+        end
+    end
+    
+    
     
     
     
