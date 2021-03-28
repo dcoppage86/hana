@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     resources :projects
   end
     
-  resources :projects, only: [:show] do
-      resources :tasks, only: [:new]
+  resources :projects do
+      resources :comments
   end
 
 
