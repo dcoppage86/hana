@@ -1,15 +1,14 @@
 class ProjectsController < ApplicationController
-    before_action :get_user
+    before_action :require_login
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
-        params[:user_id]
-        @projects = User.find(params[:user_id]).projects
+        @projects = Project.all
             
     end
 
     def new
-        @project = @user.projects.build
+        @project = Project.new
         
     end
 
@@ -53,10 +52,4 @@ class ProjectsController < ApplicationController
         @project = Project.find_by_id(params[:id])
     end
 
-    
-    def get_user
-        @user = User.find_by_id(params[:user_id])
-    end
-    
-    
 end
