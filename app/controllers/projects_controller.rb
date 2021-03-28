@@ -3,12 +3,13 @@ class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
-        byebug
-        @projects = Project.where("user_id = ?", params[:user_id])
+        params[:user_id]
+        @projects = User.find(params[:user_id]).projects
+            
     end
 
     def new
-        @project = Project.new
+        @project = @user.projects.build
         
     end
 
@@ -17,7 +18,7 @@ class ProjectsController < ApplicationController
         
         @project = Project.new(project_params)
         if @project.save 
-            redirect_to user_projects_path(current_user, @project)
+            redirect_to user_project_path(current_user, @project)
         else 
             render :new
         end
