@@ -20,11 +20,31 @@ class TasksController < ApplicationController
         @task = Task.new(user_id: @user.id)
     end
 
+    def create 
+        @task = Task.new(task_params)
+        if @task.save 
+            redirect_to projects_path
+        else 
+            render :new
+        end
+    end
+    
+    def edit
+        
+    end
+    
+
     private 
+    
     
     def get_user
         @user = User.find(params[:user_id])
     end
+
+    def task_params
+        params.require(:task).permit(:name, :completed, :user_id, :project_id)
+    end
+    
     
     
 end
