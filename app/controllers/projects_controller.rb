@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
     end
 
     def show
-        
+        @project = @project.tasks
     end
 
     def edit
@@ -31,11 +31,17 @@ class ProjectsController < ApplicationController
 
     def update
         if @project.update_attributes(project_params)
-          redirect_to user_project_path(current_user, @project)
+          redirect_to projects_path
         else
           render 'edit'
         end
     end
+
+    def destroy
+        @project.destroy
+        redirect_to projects_path
+    end
+    
     
     
     
