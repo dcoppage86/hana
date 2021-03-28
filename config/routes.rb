@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   # landing page
   root 'sessions#home'
 
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   
   resources :users, only: [:new, :create] do
-    resources :projects, only: [:index, :show, :new]
+    resources :tasks, only: [:index, :show, :new]
   end
   
   resources :comments
