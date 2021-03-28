@@ -12,10 +12,14 @@ class CommentsController < ApplicationController
     def create
         @comment = Comment.new(params[:subject])
         if @comment.save
-          redirect_to project_comment_path(current_user, @comment)
+          redirect_to project_comments_path(@comment)
         else
           render 'new'
         end
+    end
+
+    def show
+    
     end
     
     private
