@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
     before_action :login_required
-    before_action :get_user only: [:new]
+    before_action :get_user, only: [:new]
+    before_action :set_task, only: [:edit, :update, :destroy]
 
     def index
         if params[:user_id]
@@ -31,6 +32,14 @@ class TasksController < ApplicationController
     
     def edit
         
+    end
+
+    def update 
+        if @task.update(tasks_params)
+            redirect_to projects_path
+        else
+            render :edit
+        end
     end
     
 
