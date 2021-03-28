@@ -11,9 +11,10 @@ class CommentsController < ApplicationController
     end
 
     def create
+        binding.pry
         @comment = Comment.new(comment_params)
         @comment.save
-        redirect_to project_comment_path
+        redirect_to project_comment_path()
        
     end
 
@@ -30,6 +31,8 @@ class CommentsController < ApplicationController
     def get_project
         @project = Project.find_by_id(params[:project_id])
     end
+
+
 
     
     
