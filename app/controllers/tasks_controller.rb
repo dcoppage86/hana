@@ -35,7 +35,10 @@ class TasksController < ApplicationController
     
 
     private 
-    
+
+    def set_task
+        @task = Task.find(params[:id])
+    end
     
     def get_user
         @user = User.find(params[:user_id])
