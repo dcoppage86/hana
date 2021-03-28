@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
     end
 
     def show
-        @task = Task.new
+        
     end
 
     def edit
