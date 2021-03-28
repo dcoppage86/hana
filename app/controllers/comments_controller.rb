@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
     before_action :login_required
+    before_action :get_project
 
     def index
         @comments = Comment.all
@@ -10,12 +11,10 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @comment = Comment.new(params[:subject])
-        if @comment.save
-          redirect_to project_comments_path(@comment)
-        else
-          render 'new'
-        end
+        @comment = Comment.new(comment_params)
+        @comment.save
+        redirect_to project_comment_path
+       
     end
 
     def show
@@ -24,9 +23,14 @@ class CommentsController < ApplicationController
     
     private
 
-    # def comment_params
-    #     params.require(:comment).require(:subject, :content)
-    # end
+    def comment_params
+        params.require(:comment).permit(:subject, :content)
+    end
+
+    def get_project
+        @project = Project.find_by_id(params[:project_id])
+    end
+
     
     
 end
