@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    skip_before_action :login_required, :only => [:new, :create]
+    skip_before_action :login_required, :only => [:home, :new, :create]
     def home
 
     end
@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     end
 
     def create
+        
         user = User.find_by_email(params[:email])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id 
