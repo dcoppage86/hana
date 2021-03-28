@@ -17,23 +17,7 @@ class UsersController < ApplicationController
 
     def show
       
-    end
-
-    def edit
-      
-    end
-    
-    def update
-      if @user.update_attributes(user_params)
-        flash[:success] = "User was successfully updated"
-        redirect_to user_path(@user)
-      else
-        flash[:error] = "Something went wrong"
-        render 'edit'
-      end
-    end
-    
-    
+    end  
     
 
     private
