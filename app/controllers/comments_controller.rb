@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+    before_action :login_required
 
     def index
         @comments = Comment.all
@@ -9,7 +10,7 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @comment = Comment.new(comment_params)
+        @comment = Comment.new(params[:subject])
         if @comment.save
           redirect_to project_comment_path(current_user, @comment)
         else
@@ -19,9 +20,9 @@ class CommentsController < ApplicationController
     
     private
 
-    def comment_params
-        params.require(:comment).require(:subject, :content)
-    end
+    # def comment_params
+    #     params.require(:comment).require(:subject, :content)
+    # end
     
     
 end
