@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
     before_action :login_required
+    before_action :get_user only: [:new]
 
     def index
         if params[:user_id]
@@ -14,5 +15,16 @@ class TasksController < ApplicationController
             @tasks = Task.all
         end
     end
+
+    def new
+        @task = Task.new(user_id: @user.id)
+    end
+
+    private 
+    
+    def get_user
+        @user = User.find(params[:user_id])
+    end
+    
     
 end
