@@ -42,6 +42,15 @@ class TasksController < ApplicationController
         end
     end
 
+    def destroy
+       @task.destroy
+       redirect_to projects_path
+    end
+
+    def complete 
+        @task.update(completed: true)
+        redirect_to projects_path
+    end
     
     
 
