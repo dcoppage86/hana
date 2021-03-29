@@ -53,7 +53,7 @@ class TasksController < ApplicationController
        redirect_to projects_path
     end
 
-    def complete 
+    def complete
         @task.update(completed: true)
         # redirect_to projects_path
     end
