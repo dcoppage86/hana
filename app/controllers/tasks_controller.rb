@@ -41,7 +41,7 @@ class TasksController < ApplicationController
     end
 
     def update 
-        if @task.update(tasks_params)
+        if @task.update(task_params)
             redirect_to projects_path
         else
             render :edit

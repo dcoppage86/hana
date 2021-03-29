@@ -17,6 +17,11 @@
         <%= f.label :user_id, "Choose a Employee:" %>
         <%= f.collection_select :user_id, User.all, :id, :first_name %>
     </div>
+
+    <div class="form-group">
+        <%= f.label :completed %>
+        <%= f.check_box :completed %>
+    </div>
         
 
     <div class="form-group">
