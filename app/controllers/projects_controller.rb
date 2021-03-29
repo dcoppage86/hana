@@ -36,10 +36,11 @@ class ProjectsController < ApplicationController
     end
 
     def destroy
-        @project = Project.find_by_id(params[:id])
-        @project.destroy!
-        redirect_to '/projects'
+       @project = Project.find_by_id(params[:id])
+       @project.destroy
+       redirect_to project_path
     end
+   
 
     def completed_project
         @project.update(completed: true)

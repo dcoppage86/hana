@@ -49,9 +49,16 @@ class TasksController < ApplicationController
     end
 
     def destroy
-       @task.destroy
-       redirect_to projects_path
+        @task = Task.find(params[:id])
+        if @task.destroy
+            flash[:success] = 'Task was successfully deleted.'
+            redirect_to tasks_url
+        else
+            flash[:error] = 'Something went wrong'
+            redirect_to tasks_url
+        end
     end
+    
 
     def complete
         @task.update(completed: true)
