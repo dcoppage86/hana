@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
     
     def new
+      if logged_in?
+        redirect_to projects_path
+      else
         @user = User.new
+        render layout: 'sessions'
+      end
     end
     
     def create
