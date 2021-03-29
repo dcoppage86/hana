@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
     before_action :login_required
     
-    before_action :set_task, only: [:edit, :update, :destroy]
+    before_action :set_task, only: [:edit, :update, :destroy, :complete]
 
     def index
         if params[:user_id]
@@ -55,7 +55,7 @@ class TasksController < ApplicationController
 
     def complete 
         @task.update(completed: true)
-        redirect_to projects_path
+        # redirect_to projects_path
     end
     
     
