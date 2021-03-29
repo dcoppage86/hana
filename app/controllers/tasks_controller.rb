@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
     before_action :login_required
-    before_action :get_user, only: [:new]
+    
     before_action :set_task, only: [:edit, :update, :destroy]
 
     def index
@@ -18,7 +18,13 @@ class TasksController < ApplicationController
     end
 
     def new
-        @task = Task.new(user_id: @user.id)
+        if params[:user_id]
+            @user = User.find(params[:user_id])
+            @task = Task.new(user_id: @user.id)
+        else
+            @user = nil 
+            @task = Task.new
+        end
     end
 
     def create 
