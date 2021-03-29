@@ -1,0 +1,11 @@
+<table>
+    <tr>
+        <th>Task</th>
+        <th>Employee</th>
+        <th>Complete</th>
+    </tr>
+
+    <% @tasks.all.each do |t| %>
+    <% if task.completed %>
+        <tr>
+            <td><%= task.name </td></tr>
