@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # logout
 
   get 'logout', to: 'sessions#destroy'
+
+  get '/tasks/:id/complete', to:"tasks#complete"
   
   resources :sessions 
 

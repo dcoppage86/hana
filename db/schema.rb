@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_28_184716) do
+ActiveRecord::Schema.define(version: 2021_03_29_023959) do
 
   create_table "comments", force: :cascade do |t|
     t.string "subject"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_03_28_184716) do
   create_table "tasks", force: :cascade do |t|
     t.integer "project_id", null: false
     t.string "name"
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
