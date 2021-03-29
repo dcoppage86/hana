@@ -1,5 +1,5 @@
 <div class="container">
-    <%= form_for :task do |f| %>
+    <%= form_for user_tasks_path(current_user, @task) do |f| %>
 
     <div class="form-group">
         <%= f.label :name, "Name" %>
