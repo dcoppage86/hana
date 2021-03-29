@@ -1,7 +1,7 @@
 <center><% if @user %>
 <div><h1>Welcome, <%= @user.first_name if @user %> </h1>
 <br>
-<h2>These are your tasks:</h2>
+<h2>These are your tasks: </h2>
 <br>
 <%= link_to 'Create a task', new_user_task_path(@user), class: "btn btn-primary" %>
 <br>
@@ -10,6 +10,6 @@
 </center>
 <br>
 
-<%= render 'lists', :locals => {:tasks => @tasks }%>
+<%= render 'lists'%>
 
     
