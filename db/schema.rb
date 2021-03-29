@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_023959) do
+ActiveRecord::Schema.define(version: 2021_03_29_053839) do
 
   create_table "comments", force: :cascade do |t|
     t.string "subject"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_03_29_023959) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "content"
+    t.boolean "project_completed", default: false
   end
 
   create_table "tasks", force: :cascade do |t|
