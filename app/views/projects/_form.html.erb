@@ -1,5 +1,6 @@
 <%= simple_form_for @project do |f| %>
-    <%= f.input :name %>
+    <%= f.error_notification %>
+    <%= f.input :name, placeholder: 'name' %>
     <%= f.text_area :content %>
     <%= f.button :submit, 'Submit Project' %>
 <% end %>

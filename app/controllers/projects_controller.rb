@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
     end
 
     def show
-        @project = @project.tasks
+        @tasks = @project.tasks
     end
 
     def edit
