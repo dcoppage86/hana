@@ -3,7 +3,6 @@
 </h1>
 
 <%= link_to 'Edit Project', edit_project_path(@project) %>
-<%= button_to "Project Complete", projects_path, :method => "destroy", :class => "destroy" %>
 <%= link_to 'Add a Comment', new_comment_path %>
 <% tasks = @project.tasks %>
 <%= render partial: 'tasks/lists', :locals => {:@tasks => tasks}%>
