@@ -14,6 +14,7 @@
         <th scope="col">Task</th>
         <th scope="col">Project</th>
         <th scope="col">Employee</th>
+        <th scope="col">Update</th>
         <th scope="col">Complete</th>
       </tr>
     </thead>
@@ -24,9 +25,11 @@
         <% if !t.completed %>
          <tr scope="row">
             <td><%= t.name %></td>
-            <td><%= t.project.name %><%= link_to "Edit", edit_task_path(t) %>\<%= link_to "Edit", edit_task_path(t) %></td>
+            <td><%= t.project.name %></td>
             <td><%= t.user.first_name %></td>
-            
+            <td><%= link_to "Edit", edit_task_path(t) %></td>
+            <td><a class="btn btn-outline-success" href="/tasks/"<%= t.id %>/completed">Complete</td>
+        </tr>
             
             
         <% end %>
