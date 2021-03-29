@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
     end
 
     def destroy
-        binding.pry
+    
        @project.destroy
        redirect_to projects_path
     end

@@ -4,8 +4,7 @@
             <div class='row'>
                 <div class='col-md-20'>
                     <%= render 'form' %>
-                    <%= button_to "Delete Image", { action: "delete", id: @project.id },
-                                method: :delete, data: { confirm: "Are you sure?" } %>
+                    <%= button_to "Delete Project", {:controller => :projects, :action => 'destroy', :id => @project.id}, :method => :delete %>
                 </div>
             </div>
         </div>
