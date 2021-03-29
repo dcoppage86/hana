@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
     before_action :login_required
-    before_action :set_project, only: [:show, :edit, :update, :destroy, :completed_project]
+    before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
         @projects = Project.all
@@ -41,10 +41,6 @@ class ProjectsController < ApplicationController
        redirect_to project_path
     end
    
-
-    def completed_project
-        @project.update(completed: true)
-    end
     
     
     private
