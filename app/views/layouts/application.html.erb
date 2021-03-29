@@ -63,7 +63,12 @@
       <li class="nav-item">
         <a class="nav-link" href="/tasks">All Tasks</a>
       </li>
-      <li >
+      <li class="nav-item">
+        <a class="nav-link" href="<%= user_tasks_path(current_user) %>">My Tasks</a>
+      <li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log Out</a>
+      </li>
     </ul>
   </div>
 </nav>
