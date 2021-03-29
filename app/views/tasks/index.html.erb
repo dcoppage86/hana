@@ -21,12 +21,13 @@
 
 
     <% @tasks.all.each do |t| %>
-        <% if !task.completed %>
+        <% if !t.completed %>
          <tr scope="row">
             <td><%= t.name %></td>
-            <td><%= t.project.name %></td>
+            <td><%= t.project.name %><%= link_to "Edit", edit_task_path(t) %>\<%= link_to "Edit", edit_task_path(t) %></td>
             <td><%= t.user.first_name %></td>
-            <td><%= link_to "Edit", edit_task_path(t) %></td>
+            
+            
             
         <% end %>
     <% end %>
