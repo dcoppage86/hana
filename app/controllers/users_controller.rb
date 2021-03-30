@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
           session[:user_id] = @user.id
-          redirect_to user_tasks_path(current_user, @tasks)
+          redirect_to tasks_path(current_user, @tasks)
         else
           render :new
         end
