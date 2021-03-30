@@ -1,5 +1,6 @@
-<%= simple_form_for @comment do |f| %>
+<%= simple_form_for comment do |f| %>
     <%= f.input :subject %>
     <%= f.text_area :content %>
+    <%= f.input :project_id, :as => :hidden, :input_html => {value: @project.id} %>
     <%= f.button :submit, "Add Comment" %>
 <% end %>

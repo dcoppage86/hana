@@ -1,4 +1,4 @@
-<% @comments.each do |c| %>
+<% @comments.all.each do |c| %>
     <%= c.subject %>
     <%= c.content %>
 <% end %>

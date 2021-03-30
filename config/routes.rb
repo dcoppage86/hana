@@ -16,12 +16,16 @@ Rails.application.routes.draw do
   resources :sessions 
 
   resources :users, only: [:new, :create] do
-    resources :tasks, only: [:index, :show, :new, :create]
+    resources :tasks, only: [:index]
+  end
+
+  resources :projects, only: [:show] do
+    resources :tasks, only: [:new]
   end
 
   resources :tasks
   resources :comments
-  resources :projects
+  
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

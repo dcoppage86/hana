@@ -6,4 +6,12 @@
 <%= link_to 'Add a Comment', new_comment_path %>
 <% tasks = @project.tasks %>
 <%= render partial: 'tasks/lists', :locals => {:@tasks => tasks}%>
+<br>
+<% @project.comments.each do |c| %>
+    <%= c.user.first_name %>:
+    <%= c.subject %><br>
+    <%= c.content %><hr>
+<% end %>
+<br>
+<%= render partial: 'comments/form', :locals => {comment: @project.comments.build }%>
 
