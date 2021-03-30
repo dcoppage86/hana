@@ -19,8 +19,8 @@ class TasksController < ApplicationController
 
     def new
         if params[:user_id]
-            @user = User.find(params[:user_id])
-            @task = Task.new(user_id: @user.id)
+            @project = Project.find(params[:project_id])
+            @task = Task.new(project_id: @project.id)
         else
             @user = nil 
             @task = Task.new
