@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
 
     has_many :tasks, :dependent => :destroy
-    has_many :comments
+    has_many :comments, :dependent => :destroy
     has_many :users, through: :tasks
 
     validates :name, presence: :true

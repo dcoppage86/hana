@@ -13,4 +13,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  def self.find_through_omniauth(auth)
+    binding.pry
+  end
+
 end

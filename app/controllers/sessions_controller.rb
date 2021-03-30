@@ -28,10 +28,24 @@ class SessionsController < ApplicationController
         redirect_to root_path
     end
 
+    def omniauth 
+        @user = User.find_through_omniauth(auth)
+        if @user 
+            session[:user_id] = @user.id 
+            redirect_to projects_path
+        else
+            redirect_to login_path
+        end
+    end
+
     private
     
     def login(user)
         session[:user_id] = nil
+    end
+
+    def auth
+        request.env('omniauth.auth')
     end
     
     
