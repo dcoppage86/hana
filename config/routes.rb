@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'logout', to: 'sessions#destroy'
 
-  get '/auth/:provider/callback', to: 'sessions#omniauth'
+  match '/auth/:google_oauth2/callback' => 'sessions#omniauth', via: [:get, :post]
 
   
   resources :sessions 

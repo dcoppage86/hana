@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-    before_action :login_required
+    # before_action :login_required
     before_action :set_project, only: [:new]
     before_action :set_task, only: [:edit, :update, :destroy, :complete]
 
