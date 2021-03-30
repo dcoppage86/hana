@@ -1,26 +1,17 @@
 class TasksController < ApplicationController
     before_action :login_required
-    
+    before_action :set_project
     before_action :set_task, only: [:edit, :update, :destroy, :complete]
 
     def index
-        if params[:user_id]
-            if User.find(params[:user_id]) == current_user
-                @user = User.find(params[:user_id])
-                @tasks = @user.tasks 
-            else 
-                redirect_to projects_path
-                flash[:notice] = "You do not have access to this."
-            end
-        else
-            @tasks = Task.all
-        end
+        @tasks = Task.all
     end
 
     def new
+        @tasks = @project.tasks.new
         if params[:user_id]
-            @project = Project.find(params[:project_id])
-            @task = Task.new(project_id: @project.id)
+            @user = User.find(params[:user_id])
+            @task = Task.new([user_id: @user.id, project_id: @project.id])
         else
             @user = nil 
             @task = Task.new
@@ -71,6 +62,10 @@ class TasksController < ApplicationController
 
     def set_task
         @task = Task.find(params[:id])
+    end
+
+    def set_project
+        @project = Project.find(params[:project_id])
     end
     
     def get_user
