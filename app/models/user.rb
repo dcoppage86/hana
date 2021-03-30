@@ -1,3 +1,4 @@
+require 'securerandom'
 class User < ApplicationRecord
   has_many :tasks
   has_many :comments
@@ -15,6 +16,10 @@ class User < ApplicationRecord
 
   def self.find_through_omniauth(auth)
     binding.pry
+    self.find_or_create_by(uid: auth[:uid]) do |u|
+      u.first_name = auth[:info][:first_name]
+      u.email = auth[:info][:email]
+      u.password = SecureRandom.hex(16)
+    end
   end
-
 end

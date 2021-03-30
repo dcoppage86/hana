@@ -12,3 +12,6 @@
     <%= submit_tag "Login", class: "btn btn-large btn-primary" %>
 <% end %>
 
+<%= form_tag('/auth/google_oauth2') do %>
+    <%= submit_tag "Login with Google"%>
+<% end %>

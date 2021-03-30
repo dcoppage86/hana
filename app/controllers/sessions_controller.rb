@@ -28,7 +28,8 @@ class SessionsController < ApplicationController
         redirect_to root_path
     end
 
-    def omniauth 
+    def omniauth
+         
         @user = User.find_through_omniauth(auth)
         if @user 
             session[:user_id] = @user.id 
@@ -45,7 +46,7 @@ class SessionsController < ApplicationController
     end
 
     def auth
-        request.env('omniauth.auth')
+        request.env.fetch('omniauth.auth')
     end
     
     
