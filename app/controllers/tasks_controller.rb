@@ -52,7 +52,8 @@ class TasksController < ApplicationController
     
 
     def complete
-        @task.update(completed: true)
+        @tasks = Task.all
+        @task.completed_tasks
         # redirect_to projects_path
     end
     

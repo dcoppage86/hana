@@ -33,3 +33,35 @@
     <% end %>
     </tbody>
 </table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<table class = "table table-striped" >
+    <thead class = "thead-dark">
+      <tr>
+        <th scope="col">Task</th>
+        <th scope="col">Project</th>
+        <th scope="col">Employee</th>
+        <th scope="col">Completed</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+    <% current_user.tasks.each do |t| %>
+        <% if t.completed %>
+         <tr scope="row">
+            <td><%= t.name %></td>
+            <td><%= t.project.name %></td>
+            <td><%= t.user.first_name %></td>
+            <td>Yes</td>
+        </tr>
+            
+            
+        <% end %>
+    <% end %>
+    </tbody>
+</table>
