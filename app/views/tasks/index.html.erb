@@ -1,14 +1,10 @@
-<center><% if current_user %>
-<div><h1>Welcome, <%= current_user.first_name %> </h1>
-<br>
-<h2>These are your tasks: </h2>
-<br>
-<br>
-</div>
+<center>
+<% if current_user %>
+<%= render 'userlists' %>
+<% else %>
+<%= render 'lists'%>
 <% end %>
 </center>
 <br>
-
-<%= render 'lists'%>
 
     
