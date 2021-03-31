@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-    skip_before_action :verify_authenticity_token, only: :google
-    skip_before_action :login_required, :only => [:home, :new, :create]
+    skip_before_action :verify_authenticity_token, only: :omniauth
+    
     def home
         if logged_in?
             redirect_to projects_path
@@ -31,9 +31,11 @@ class SessionsController < ApplicationController
 
     def omniauth
          
-        @user = User.find_or_create_by(email: auth["info"]["name"]) do |u|
+        @user = User.find_or_create_by(uid: auth["uid"], email: auth["info"]["email"]) do |u|
             u.password = SecureRandom.hex(16)
         end
+        
+
         if @user && @user.id
             session[:user_id] = @user.id 
             redirect_to projects_path
