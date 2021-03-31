@@ -1,0 +1,35 @@
+<div>
+    <h1>
+    Welcome, <%= current_user.first_name %>
+    </h1>
+    <br>
+    <h2>These are your tasks: </h2>
+    <br>
+    <br>
+</div>
+<table class = "table table-striped" >
+    <thead class = "thead-dark">
+      <tr>
+        <th scope="col">Task</th>
+        <th scope="col">Project</th>
+        <th scope="col">Employee</th>
+        <th scope="col">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+    <% current_user.tasks.each do |t| %>
+        <% if !t.completed %>
+         <tr scope="row">
+            <td><%= t.name %></td>
+            <td><%= t.project.name %></td>
+            <td><%= t.user.first_name %></td>
+            <td><%= link_to "Edit", edit_task_path(t) %></td>
+        </tr>
+            
+            
+        <% end %>
+    <% end %>
+    </tbody>
+</table>
