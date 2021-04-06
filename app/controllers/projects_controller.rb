@@ -3,8 +3,9 @@ class ProjectsController < ApplicationController
 
     def index
         @projects = Project.all
-    end
-
+        @projects = Project.search(params[:search]) unless params[:search].blank?
+    end 
+    
     def new
         @project = Project.new
         
@@ -37,9 +38,8 @@ class ProjectsController < ApplicationController
     end
 
     def destroy
-    
-       @project.destroy
-       redirect_to projects_path
+        @project.destroy
+        redirect_to projects_path
     end
    
     

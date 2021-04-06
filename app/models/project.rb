@@ -8,5 +8,11 @@ class Project < ApplicationRecord
     validates :content, presence: :true 
     validates :content, length: {maximum: 50, message: "%{count} characters is the max!"}
 
+    scope :listed_projects, -> { where(project: true)}
+
+    def self.search(term)
+        where("name like :term", term: "%#{term}%")
+    end
+
     
 end

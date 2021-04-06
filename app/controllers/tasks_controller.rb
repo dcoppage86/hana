@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
     
     before_action :set_project, only: [:new]
-    before_action :set_task, only: [:edit, :update, :destroy, :complete]
+    before_action :set_task, only: [:edit, :update]
+    
 
     def index
         @tasks = Task.all
@@ -39,18 +40,6 @@ class TasksController < ApplicationController
         end
     end
 
-    def destroy
-        @task = Task.find(params[:id])
-        if @task.destroy
-            flash[:success] = 'Task was successfully deleted.'
-            redirect_to tasks_url
-        else
-            flash[:error] = 'Something went wrong'
-            redirect_to tasks_url
-        end
-    end
-    
-
     def complete
         @tasks = Task.all
         @task.completed_tasks
@@ -62,15 +51,11 @@ class TasksController < ApplicationController
     private 
 
     def set_task
-        @task = Task.find(params[:id])
+        @task = Task.find_by_id(params[:id])
     end
 
     def set_project
         @project = Project.find(params[:project_id])
-    end
-    
-    def get_user
-        @user = User.find(params[:user_id])
     end
 
     def task_params
